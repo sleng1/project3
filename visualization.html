@@ -29,12 +29,12 @@
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 100, right: 150, bottom: 60, left: 30},
+    const margin = {top: 100, right: 150, bottom: 60, left: 30},
         width = 1200 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
-    var svg = d3.select("#my_dataviz")
+    const svg = d3.select("#my_dataviz")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -50,7 +50,7 @@
       // ---------------------------//
     
       // Add X axis
-      var x = d3.scaleLinear()
+      const x = d3.scaleLinear()
         .domain([0, 70])
         .range([ 0, width ]);
       svg.append("g")
@@ -65,7 +65,7 @@
           .text("Average Fantasy Points Per Game");
     
       // Add Y axis
-      var y = d3.scaleLinear()
+      const y = d3.scaleLinear()
         .domain([-18, 11])
         .range([ height, 0]);
       svg.append("g")
@@ -80,12 +80,12 @@
           .attr("text-anchor", "start")
     
       // Add a scale for bubble size
-      var z = d3.scaleLinear()
+      const z = d3.scaleLinear()
         .domain([0, 35])
         .range([ 2, 30]);
     
       // Add a scale for bubble color
-      var myColor = d3.scaleOrdinal()
+      const myColor = d3.scaleOrdinal()
         .domain(["Yes", "No"])
         .range(d3.schemeSet1);
     
@@ -95,7 +95,7 @@
       // ---------------------------//
           
       // -1- Create a tooltip div that is hidden by default:
-  var tooltip = d3.select("#my_dataviz")
+  const tooltip = d3.select("#my_dataviz")
     .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
@@ -105,7 +105,7 @@
       .style("color", "white")
 
   // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
-  var showTooltip = function(d) {
+  const showTooltip = function(d) {
     tooltip
       .transition()
       .duration(200)
@@ -115,6 +115,7 @@
         "<b>Player Stats:</b> <br> Player: " + d.Player
         + "<br> Team: " + d.Team
         + "<br> Age: " + d.Age
+        + "<br> MPG: " + d.MIN
         + "<br> PPG: " + d.PTS
         + "<br> RPG: " + d.REB
         + "<br> APG: " + d.AST
@@ -128,12 +129,12 @@
       .style("left", (d3.mouse(this)[0]+30) + "px")
       .style("top", (d3.mouse(this)[1]+30) + "px")
   }
-  var moveTooltip = function(d) {
+  const moveTooltip = function(d) {
     tooltip
       .style("left", (d3.mouse(this)[0]+30) + "px")
       .style("top", (d3.mouse(this)[1]+30) + "px")
   }
-  var hideTooltip = function(d) {
+  const hideTooltip = function(d) {
     tooltip
       .transition()
       .duration(200)
@@ -147,7 +148,7 @@
       // ---------------------------//
     
       // What to do when one group is hovered
-      var highlight = function(d){
+      const highlight = function(d){
         // reduce opacity of all groups
         d3.selectAll(".bubbles").style("opacity", .05)
         // expect the one that is hovered
@@ -155,7 +156,7 @@
       }
     
       // And when it is not hovered anymore
-      var noHighlight = function(d){
+      const noHighlight = function(d){
         d3.selectAll(".bubbles").style("opacity", 1)
       }
     
@@ -187,9 +188,9 @@
         // ---------------------------//
     
         // Add legend: circles
-        var valuesToShow = [0, 20, 40]
-        var xCircle = 1100
-        var xLabel = 1150
+        const valuesToShow = [0, 20, 40]
+        const xCircle = 1100
+        const xLabel = 1150
         svg
           .selectAll("legend")
           .data(valuesToShow)
@@ -246,8 +247,8 @@
           .attr('font-size', '20px')
 
         // Add one dot in the legend for each name.
-        var size = 20
-        var allgroups = ["Yes", "No"]
+        const size = 20
+        const allgroups = ["Yes", "No"]
         svg.selectAll("myrect")
           .data(allgroups)
           .enter()
