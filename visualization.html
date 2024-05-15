@@ -107,6 +107,8 @@
 
   // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
   const showTooltip = function(d) {
+    var matrix = this.getScreenCTM()
+        .translate(+ this.getAttribute("cx"), + this.getAttribute("cy"));
     tooltip
       .transition()
       .duration(200)
@@ -127,15 +129,10 @@
         + "<br> Plus-Minus: " + d.PlusMinus
         + "<br> Fantasy PPG: " + d.FP
       )
-      .style("left", (d3.mouse(this)[0]+30) + "px")
-      .style("top", (d3.mouse(this)[1]+30) + "px")
-    
+      .style("left", (window.pageXOffset + matrix.e + 50) + "px")
+      .style("top", (window.pageYOffset + matrix.f + 50) + "px");
   }
-  const moveTooltip = function(d) {
-    tooltip
-      .style("left", (d3.mouse(this)[0]+30) + "px")
-      .style("top", (d3.mouse(this)[1]+30) + "px")
-  }
+
   const hideTooltip = function(d) {
     tooltip
       .transition()
@@ -155,6 +152,12 @@
         d3.selectAll(".bubbles").style("opacity", .05)
         // expect the one that is hovered
         d3.selectAll("."+d).style("opacity", 1)
+      }
+
+      const highlight1 = function(d){
+        div.transition()        
+                .duration(200)      
+                .style("opacity", .8);
       }
     
       // And when it is not hovered anymore
@@ -179,8 +182,8 @@
           .attr("r", function (d) { return z(d['PTS']); } )
           .style("fill", function (d) { return myColor(d['First Round Exit']); } )
         // -3- Trigger the functions for hover
+        .on("mouseover", highlight1)
         .on("mouseover", showTooltip )
-        //.on("mousemove", moveTooltip )
         .on("mouseleave", hideTooltip )
 
     
