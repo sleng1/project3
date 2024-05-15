@@ -107,7 +107,7 @@
 
   // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
   const showTooltip = function(d) {
-    d3.selectAll(".bubbles").style("opacity", 0.4)
+    d3.selectAll(".bubbles").style("opacity", 0.2)
     d3.select(event.currentTarget).style("opacity", 0.9)
     var matrix = this.getScreenCTM()
         .translate(+ this.getAttribute("cx"), + this.getAttribute("cy"));
@@ -152,7 +152,7 @@
       // What to do when one group is hovered
       const highlight = function(d){
         // reduce opacity of all groups
-        d3.selectAll(".bubbles").style("opacity", .05)
+        d3.selectAll(".bubbles").style("opacity", 0.2)
         // expect the one that is hovered
         d3.selectAll("."+d).style("opacity", 1)
       }
