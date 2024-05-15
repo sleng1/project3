@@ -1,5 +1,5 @@
-# project3
-<iframe src="visualization.html" width="1100" height="750"></iframe>\
+# Visualizing The 2024 NBA Playoffs
+<iframe src="visualization.html" width="1100" height="750" margin-left="-100></iframe>\
 
   Perhaps being quite an opportune time amidst this year’s NBA playoffs, the dataset we selected to base our interactive visualization off of was a large, statistical database of the ongoing 2024 playoffs consisting of all the quantifiable metrics used by the league office to record individual player activity. This dataset was of considerable size with over 200 rows and 20 columns and contained all the relevant statistics perused by basketball fanatics to judge player performance.\
 
