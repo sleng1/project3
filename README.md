@@ -1,5 +1,5 @@
 # project3
 
-<iframe src="visualization.html" width="1200" height="900"></iframe>
+<iframe src="visualization.html" width="1000" height="750"></iframe>
 
 Write up goes here
